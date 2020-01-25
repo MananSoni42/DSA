@@ -1,49 +1,65 @@
 #include "que.h"
 
-Queue newQ() {
-	Queue q = (Queue*)malloc(sizeof(Queue));
-	q->len = 0;
+Queue* newQ() {
+	Queue* q = (Queue*)malloc(sizeof(Queue));
+	q->size = 0;
 	q->head = NULL;
-	q->head->next = NULL;
 	q->tail = NULL;
-	q->tail->next = NULL;
 	return q;
 }
 
-Boolean isEmptyQ(Queue q) {
-	if (q->len == 0) {
+bool isEmptyQ(Queue* q) {
+	if (q->size == 0) {
 		return true;
 	}
 	return false;
 }
 
-Queue delQ(Queue q) {
-	if (q.isEmptyQ()) {
+Queue* delQ(Queue* q) {
+	Node* ptr = q->head;
+	if (ptr == NULL) {
+		q->tail = NULL;
 		return q;
 	}
-	else {
-		node* ptr = NULL;
-		ptr = q->head;
-		q->head = q->head->next;
-		free(ptr);
-	}
-	q->len--;
+	q->head = q->head->next;
+	free(ptr);
+	q->size--;
 	return q;
 }
 
-Element Front(Queue q) {
-	return q->head;
-}
-
-Queue addQ(Queue q, Element e) {
-	node* ptr = (node)malloc(sizeof(node));
-	ptr->elem = e
+Queue* addQ(Queue* q, Element e) {
+	Node* ptr = (Node*)malloc(sizeof(Node));
+	ptr->elem = e;
 	ptr->next = NULL;
-	q->tail->next = ptr;
-	q->tail = ptr;
-	q->len++;
+	if (q->tail == NULL) {
+		q->tail = ptr;
+		q->head = q->tail;
+	}
+	else {
+		q->tail->next = ptr;
+	}
+	q->size++;
+	return q;
 }
 
-int lengthQ(Queue q) {
-	return q->len;
+Element front(Queue* q) {
+	Element e;
+	e.id = -1; e.pr = -1;
+	if (q->head == NULL) {
+		return e;
+	}
+	return q->head->elem;
+}
+
+int lengthQ(Queue* q) {
+	return q->size;
+}
+
+void printQ(Queue* q) {
+	Node* ptr = q->head;
+	while (ptr!=NULL) {
+		printf("[id-%d, pr-%d] ",(ptr->elem).id,(ptr->elem).pr);
+		ptr = ptr->next;
+	}
+	printf("\n");
 }
