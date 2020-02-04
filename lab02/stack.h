@@ -14,4 +14,5 @@ struct stack {
 void push (struct stack*,int);
 int pop(struct stack*);
 void printStack (struct stack*);
+void printStackToFile (struct stack*,FILE*);
 int searchStack (struct stack*,int);
