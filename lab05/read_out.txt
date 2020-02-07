@@ -1,0 +1,4 @@
+Time taken to read    10000 is 12.7570 ms
+Time taken to read   100000 is 45.2030 ms
+Time taken to read  1000000 is 229.1350 ms
+Time taken to read 10000000 is 3210.5680 ms
