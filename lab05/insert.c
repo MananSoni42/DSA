@@ -14,34 +14,48 @@ typedef struct data {
     char lname[MAX];
 } DATA;
 
+DATA* ptr_to_base = NULL;
+
+int measure(DATA* ptr) {
+    if (ptr_to_base == NULL) {
+        ptr_to_base = ptr;
+        return 0;
+    }
+    //printf("%p - %p = %d\n",ptr,ptr_to_base,ptr-ptr_to_base);
+    return ptr-ptr_to_base;
+}
+
 void insertInOrder(DATA* arr, int len, DATA elem) { //ensure size of DATA arr is atleast len+1
     int i,j;
     DATA temp;
-    for (i=0;i<len;i++) { 
+    for (i=0;i<len;i++) {
         if (arr[i].card_num > elem.card_num) {
             temp = arr[i];
             arr[i] = elem;
-            for (j=i+1;j<len;j++) {
+            for (j=len-1;j>=i+1;j--) {
                 arr[j+1] = arr[j];
             }
             arr[i+1] = temp;
-        }   
+            break;
+        }
     }
     if (i == len) {
         arr[len] = elem;
     }
 }
 
-void insertionSort(DATA* arr, int len) {
+int insertionSort(DATA* arr, int len) {
     if (len <= 1) {
-        return;
+        return measure(&arr[1]);
     }
 
     //sort first len-1 elements
-    insertionSort(arr,len-1);
+    int mem = insertionSort(arr,len-1);
 
     // insert last element at correct postion
-    insertInOrder(arr,len,arr[len-1]);
+    insertInOrder(arr,len-2,arr[len-2]);
+
+    return mem;
 }
 
 DATA *read(char* f, int *len) {
@@ -70,14 +84,14 @@ DATA *read(char* f, int *len) {
         }
 
         fgets(line,MAX,fstream); // read a line from the text file
-        
+
         lptr = line;
         lptr++;
         lptr[strlen(line)-3] = 0; // remove enclosing double quotes from the file
 
         tok = strtok(lptr,",");
         for (i=0;i<5;i++) {
-            
+
             if (tok == NULL) { // catch any unknown errors
                 err = true;
                 break;
@@ -102,33 +116,57 @@ DATA *read(char* f, int *len) {
 }
 
 int main() {
-    int size=0;
+    DATA base, *arr;
+    int size=0,mem=0;
     long int i;
     char fname[MAX];
     struct timeval t1, t2;
     double elapsedTime;
 
-    for (i=10;i<=100;i*=10) {
+    measure(&base); // initialize base ptr inside the function
+
+    printf("size of file, time taken ,stack space\n");
+    for (i=10;i<=10000;i*=10) {
         sprintf(fname, "lab_sheet/%ld",i);
+        free(arr);
+        arr = read(fname,&size);
 
-        // start timer
-        gettimeofday(&t1, NULL);    
+        if (i == 10000) {
+          for (int j=30;j<=10000;j*=2) {
+            size = j;
+            // start timer
+            gettimeofday(&t1, NULL);
 
-        DATA *arr = read(fname,&size);
-        //insertionSort(arr,size);
-        for(int j=0;j<size;j++) {
-            printf("%d: %lld ",j,arr[j].card_num);
-        } printf("\n");
-       
-        // stop timer
-        gettimeofday(&t2, NULL);
+            mem = insertionSort(arr,size+1);
 
-        // compute and print the elapsed time in millisec
-        elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0; // sec to ms
-        elapsedTime += (t2.tv_usec - t1.tv_usec) / 1000.0; // us to ms
+            // stop timer
+            gettimeofday(&t2, NULL);
 
-        printf("%d,%3.4f\n",i,elapsedTime);
+            // compute and print the elapsed time in millisec
+            elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0; // sec to ms
+            elapsedTime += (t2.tv_usec - t1.tv_usec) / 1000.0; // us to ms
+
+            printf("%d,%3.4f,%ld\n",j,elapsedTime,mem);
+          }
+        }
+
+        else {
+          // start timer
+          gettimeofday(&t1, NULL);
+
+          mem = insertionSort(arr,size+1);
+
+          // stop timer
+          gettimeofday(&t2, NULL);
+
+          // compute and print the elapsed time in millisec
+          elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0; // sec to ms
+          elapsedTime += (t2.tv_usec - t1.tv_usec) / 1000.0; // us to ms
+
+          printf("%d,%3.4f,%ld\n",size,elapsedTime,mem);
+        }
     }
+
 
     return 0;
 }
