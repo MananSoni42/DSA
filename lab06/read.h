@@ -1,3 +1,6 @@
+#ifndef READ_H
+#define READ_H
+
 #define STRMAX 20
 
 typedef struct data {
@@ -6,3 +9,5 @@ typedef struct data {
 } DATA;
 
 DATA* read_from_csv(char*,int*);
+
+#endif
