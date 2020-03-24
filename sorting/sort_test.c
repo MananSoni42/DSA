@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv) {
     if (argc < 3) {
-        printf("Usage: ./test_sort <size of array> <type of array>\n");
+        printf("Usage: ./sort_test <size of array> <type of array>\n");
         exit(1);
     }
 

@@ -9,7 +9,7 @@ int get_bit(int num, int bits) {
 }
 
 void counting_sort(DATA* arr, int len, int range, int bit) {
-    int ind[MAX],i,k=0;
+    int ind[range],i,k=0;
     DATA out[len];
     memset(ind,0,range*sizeof(int));
    

@@ -3,8 +3,12 @@
 void sort(DATA* arr, int len) {
     int ind[MAX],i,k=0;
     DATA out[len];
-    memset(ind,0,MAX*sizeof(int));
+
     
+    for (i=0;i<MAX;i++) {
+        ind[i] = 0;
+    }
+
     for (i=0;i<len;i++) { // populate indices (store counts)
         ind[arr[i].index]++;
     }
