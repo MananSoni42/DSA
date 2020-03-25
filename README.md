@@ -1,11 +1,12 @@
 # DSA (CS F211)
-* This repository contains code done as a part of the Data Structure and Algorithms course done at BITS Pilani.
-* It has 2 main branches - master and experiments.  
+* This repository contains code where I implement and explore the various Data Structures and Algorithms. This code was mainly written while I was studying Data Structure and Algorithms course (CS F211) at BITS Pilani.
+* It has 2 branches - master and lab.  
 	* **[master](https://github.com/MananSoni42/DSA/tree/master)**: Contains code where I explore the different data structures and algorithms that have been taught in the classroom.
 	* **[lab](https://github.com/MananSoni42/DSA/tree/lab)**: Contains code for the weekly lab assignments along with the lab sheet for the week (PDF).
 
 P.S.
-Check out [Valgrind](https://valgrind.org/). It is a very effective memory management tool which can automatically detect many memory management and threading bugs, and profile your programs in detail.
+Check out [Valgrind](https://valgrind.org/). It is a very effective memory management tool which can automatically detect many memory management and threading bugs, and profile your programs in detail.  
+<img src="https://thumbs.gfycat.com/GentleTimelyFox-size_restricted.gif" width="150" height="100" />  
 It has saved hours of my time while debugging (mainly for segfaults).
 
 ## Naming convention
@@ -51,6 +52,14 @@ Sorting is performed by comparing the indices only.
 ## implementaion
 All sorting algorithms are stored in seperate files. E.g if you wanted to implement selection sort, write a function sort:
 ```void sort(DATA* arr, int len)``` in selection_sort.c. (It is important that you store the file with the correct name as this is required by the Makefile). 
+
+## Makefile
+The makefile for the sorting is a bit different as it takes a command line arguement namely sort. You can do the following
+```
+make sort=quick  # compiles sort_test using the quick sort implementation provided at quick_sort.c
+make time sort=quick  # compiles sort_time using the quick sort implementation provided at quick_sort.c
+make clean
+```
 
 ## Usage
 To test your sorting algorithm, a program - sort_test has been provided. It takes 2 command line arguments - the size and type of the array. Suppose you wanted to test your implementation of selection sort with a reverse sorted array of size 42. You would need to write:
