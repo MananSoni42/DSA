@@ -43,6 +43,12 @@ Using the given ADT, different Linked Lists problems are tackled, these include:
 A program that can display the contents of any given csv. The maximum linewidth is specified in the header file (read_csv.h).
 The program focuses on being able to read any given csv file along with the ability to correctly terminate with the correct error code in case of any inconsistencies. Some focus has also been put on displaying the csv in a pleasing manner.
 
+## Screenshots
+sample csv  
+<img src="https://github.com/MananSoni42/DSA/blob/master/csv_reader/sample_csv.png" width="500" height="200" />  
+output  
+![output](https://github.com/MananSoni42/DSA/blob/master/csv_reader/sample_out.png)  
+
 # Sorting
 Many popular sorting algorithms are implemented in a (hopefully) generalizable manner. The data structure used to hold the data has 2 fields:
 index - Must be positive integers between 0 and MAX-1
