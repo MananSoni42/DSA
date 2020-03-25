@@ -1,7 +1,9 @@
 #include "sort.h"
+#include<stdlib.h>
 
 void sort(DATA* arr, int len) {
-    int ind[MAX],i,k=0;
+    int i,k=0;
+    int *ind = (int*)malloc(MAX*sizeof(int));
     DATA out[len];
 
     
@@ -27,5 +29,6 @@ void sort(DATA* arr, int len) {
         ind[arr[i].index]++;
     }
 
+    free(ind);
     memcpy(arr,out,len*sizeof(DATA));
 }

@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
-#define MAX 100000000
+#define MAX 1000000
 
 typedef struct data {
     int index;
