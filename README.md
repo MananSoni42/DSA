@@ -90,32 +90,32 @@ The sorts implemented over here are:
 # Program Tree
 ```
 ├── linked_list				
-|	    ├── ll.h 		# header file for a generic linked list
-|	    ├── testll 		# Verify that the basic linked list functions are correctly implemented
-|	    ├── middle 		# print the middle element of a given list in O(n) time
-|	    ├── k_end 		# print the kth element from the end in O(n) time
-|	    ├── delete 		# delete the entire list
-|	    ├── del_alternate 	# delete alternate nodes
-|	    ├── loop 		# detect loops in a list
-|	    ├── reverse_iter 	# reverse a list iteratively ( O(n) time, O(1) space )
-|	    ├── reverse_rec 	# reverse a list recursively ( O(n) time, O(n) space )
-|	    └── Makefile 	# Apart from the usual, make <executable> - create executable for the specific code E.g - make middle
+|	├── ll.h 		# header file for a generic linked list
+|	├── testll 		# Verify that the basic linked list functions are correctly implemented
+|	├── middle 		# print the middle element of a given list in O(n) time
+|	├── k_end 		# print the kth element from the end in O(n) time
+|	├── delete 		# delete the entire list
+|	├── del_alternate 	# delete alternate nodes
+|	├── loop 		# detect loops in a list
+|	├── reverse_iter 	# reverse a list iteratively ( O(n) time, O(1) space )
+|	├── reverse_rec 	# reverse a list recursively ( O(n) time, O(n) space )
+|	└── Makefile 	# Apart from the usual, make <executable> - create executable for the specific code E.g - make middle
 ├── csv_reader
-|	    ├── read_csv.h 	# header file - contains constants for max linewidth and max allowed fields
-|	    ├── read_csv.c 	# contains the bulk of the code used to read the csv line by line
-|	    ├── test_read_csv 	# executable file that can read given csvs (given as command line arguements)
-|	    └── Makefile 	# makefile
+|	├── read_csv.h 	# header file - contains constants for max linewidth and max allowed fields
+|	├── read_csv.c 	# contains the bulk of the code used to read the csv line by line
+|	├── test_read_csv 	# executable file that can read given csvs (given as command line arguements)
+|	└── Makefile 	# makefile
 └── sorting
-|	    ├── sort.h 	# header file - contains constants for max integer permitted in index
-|	    ├── sort_test.c 	# test a particular sorting algorithm - takes command line arguements
-|	    ├── sort_time.c 	# test a particular sort and measure the time taken to run the sorting algorithm - takes command line arguements
-|	    ├── bubble_sort.c
-|	    ├── insertion_sort.c
-|	    ├── selection_sort.c
-|	    ├── merge_sort.c
-|	    ├── quick_sort.c 	# has options to choose partitions - first element, last element, random element, median of 3 random element
-|	    ├── heap_sort.c
-|	    ├── counting_sort.c # may throw segmentation fault work if MAX (defined in sort.h) is too large
-|	    ├── radix_sort.c
-|	    └── Makefile 	# makefile
+	├── sort.h 	# header file - contains constants for max integer permitted in index
+	├── sort_test.c 	# test a particular sorting algorithm - takes command line arguements
+	├── sort_time.c 	# test a particular sort and measure the time taken to run the sorting algorithm - takes command line arguements
+	├── bubble_sort.c
+	├── insertion_sort.c
+	├── selection_sort.c
+	├── merge_sort.c
+	├── quick_sort.c 	# has options to choose partitions - first element, last element, random element, median of 3 random element
+	├── heap_sort.c
+	├── counting_sort.c # may throw segmentation fault work if MAX (defined in sort.h) is too large
+	├── radix_sort.c
+ 	└── Makefile 	# makefile
 ```
