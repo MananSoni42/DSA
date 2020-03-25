@@ -3,7 +3,7 @@
 
 #include<stdbool.h>
 #define MaxStrLen 100 // each line in the CSV can be a maximum of 100 characters wide
-#define MaxTokLen 20
+#define MaxTokLen 30
 void setField(char*,char);
 bool read_line_from_csv(FILE*,char);
 int read_from_csv(char*,char);
